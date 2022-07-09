@@ -16,6 +16,8 @@ const getKao = (seed?: string, category?: KaoCategory, maxLength?: number): stri
   return kaoList[selectedCategory][kaoIndex];
 };
 
+export const kaomoji = (seed?: string, category?: KaoCategory, maxLength?: number): string =>
+  getKao(seed, category, maxLength);
 export const greeting = (seed?: string, maxLength?: number): string => getKao(seed, 'greeting', maxLength);
 export const fun = (seed?: string, maxLength?: number): string => getKao(seed, 'fun', maxLength);
 export const sad = (seed?: string, maxLength?: number): string => getKao(seed, 'sad', maxLength);
