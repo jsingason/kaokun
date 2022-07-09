@@ -1,6 +1,8 @@
-import kaoList from './kao.json';
+import kaoList from './kao_kaomojiya.json';
 
-type IKaoCategory = 'happy' | 'sad' | 'angry' | 'neutral' | 'surprised';
+// TODO: Add more sources and categorize based on the source
+
+type IKaoCategory = 'greeting' | 'fun' | 'sad' | 'hurt' | 'angry' | 'love';
 
 const getKao = (seed?: string, category?: IKaoCategory, maxLength?: number): string => {
   const seedAsNumber = getSeed(seed);
@@ -14,11 +16,12 @@ const getKao = (seed?: string, category?: IKaoCategory, maxLength?: number): str
   return kaoList[selectedCategory][kaoIndex];
 };
 
-export const happy = (seed?: string, maxLength?: number): string => getKao(seed, 'happy', maxLength);
+export const greeting = (seed?: string, maxLength?: number): string => getKao(seed, 'greeting', maxLength);
+export const fun = (seed?: string, maxLength?: number): string => getKao(seed, 'fun', maxLength);
 export const sad = (seed?: string, maxLength?: number): string => getKao(seed, 'sad', maxLength);
+export const hurt = (seed?: string, maxLength?: number): string => getKao(seed, 'hurt', maxLength);
 export const angry = (seed?: string, maxLength?: number): string => getKao(seed, 'angry', maxLength);
-export const neutral = (seed?: string, maxLength?: number): string => getKao(seed, 'neutral', maxLength);
-export const surprised = (seed?: string, maxLength?: number): string => getKao(seed, 'surprised', maxLength);
+export const love = (seed?: string, maxLength?: number): string => getKao(seed, 'love', maxLength);
 export const random = (maxLength?: number): string => getKao(undefined, undefined, maxLength);
 
 const getKaoCategory = (category?: IKaoCategory): IKaoCategory => {
