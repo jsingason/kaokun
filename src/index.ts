@@ -2,9 +2,9 @@ import kaoList from './kao_kaomojiya.json';
 
 // TODO: Add more sources and categorize based on the source
 
-type IKaoCategory = 'greeting' | 'fun' | 'sad' | 'hurt' | 'angry' | 'love';
+export type KaoCategory = 'greeting' | 'fun' | 'sad' | 'hurt' | 'angry' | 'love';
 
-const getKao = (seed?: string, category?: IKaoCategory, maxLength?: number): string => {
+const getKao = (seed?: string, category?: KaoCategory, maxLength?: number): string => {
   const seedAsNumber = getSeed(seed);
   const selectedCategory = getKaoCategory(category);
   if (maxLength) {
@@ -24,9 +24,9 @@ export const angry = (seed?: string, maxLength?: number): string => getKao(seed,
 export const love = (seed?: string, maxLength?: number): string => getKao(seed, 'love', maxLength);
 export const random = (maxLength?: number): string => getKao(undefined, undefined, maxLength);
 
-const getKaoCategory = (category?: IKaoCategory): IKaoCategory => {
+const getKaoCategory = (category?: KaoCategory): KaoCategory => {
   if (category) return category;
-  const categories = Object.keys(kaoList) as IKaoCategory[];
+  const categories = Object.keys(kaoList) as KaoCategory[];
   return categories[Math.floor(Math.random() * categories.length)];
 };
 
