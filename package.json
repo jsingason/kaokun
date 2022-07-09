@@ -1,0 +1,40 @@
+{
+  "name": "kaokun",
+  "keywords": [
+    "kaokun",
+    "kaomoji",
+    "seed",
+    "generate",
+    "faces",
+    "funny",
+    "emoji",
+    "emotions",
+    "japanese"
+  ],
+  "main": "./lib/index.js",
+  "files": [
+    "/lib/**/*"
+  ],
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "tsc",
+    "format": "prettier --write \"src/**/*.ts\" \"src/**/*.json\"",
+    "lint": "tslint -p tsconfig.json"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/jsingason/kaokun.git"
+  },
+  "version": "1.0.0",
+  "description": "Generate Kaomoji with seeding",
+  "homepage": "https://joi.red/kaokun",
+  "bugs": "https://github.com/jsingason/kaokun/issues",
+  "author": "Jóhann S. Ingason <jsingason@gmail.com>",
+  "license": "MIT",
+  "devDependencies": {
+    "prettier": "^2.7.1",
+    "tslint": "^6.1.3",
+    "tslint-config-prettier": "^1.18.0",
+    "typescript": "^4.7.4"
+  }
+}
