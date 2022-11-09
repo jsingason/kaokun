@@ -66,10 +66,9 @@ export const kaoEmotions: IKaoEmotions = {
   ],
 };
 
-const anySide = ['//', '///', '～', '～～', '～～～', '凸', 'w', 'щ'];
+const anySide = ['//', '///', '～', '～～', '～～～', '凸', 'w', 'щ', '☞'];
 const leftSide = anySide.concat(['q(', '○( ', '⌒(o', '(', '(〃', '╰（', '┗|', '(╯', '(ヘ', 'ε=(', '┌┤']);
 const rightSide = anySide.concat([')p', ')っ', 'o)ノﾟ', ')', '〃)', '）╯', '|┛', ')╯︵┻━┻', ')ヘ┳━┳', ')○～', '／★', '├┐'])
-
 
 export const kaoPortions: IKaoPortions = {
   eyes: [
@@ -121,6 +120,7 @@ export const kaoPortions: IKaoPortions = {
   ],
   mouth: [
     '_',
+    'ヮ',
     'ω',
     'ൠ',
     'o',

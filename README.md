@@ -3,8 +3,6 @@
 
 Randomize a **Kaomoji** (**顔文字**) with custom seeds
 
-Currently featuring 3000~ kaomoji
-
 **(☞ﾟヮﾟ)☞**
 
 </div>
@@ -24,12 +22,18 @@ yarn add kaokun
 ```
 import * as kaokun from 'kaokun';
 
+import { random as kaoRandom } from 'kaokun';
+import { happy as kaoRandom } from 'kaokun';
 
-kaokun.greeting();    Good☆':.*ヾ(●･ｖ･人･ｖ･○)ﾉ*.:'☆Morning
-kaokun.fun();         v(｡･ω･｡)ｨｪｨ♪
-kaokun.sad();         (´ω｀。)グスン
-kaokun.hurt();        ￣Д￣　＝３　ハァ
-kaokun.angry();       | ｀Д´|ﾉこらぁ！
-kaokun.love();        (๑￫‿ฺ￩๑)
-kaokun.random();      (* ´Д゜*)あん？
+
+kaokun.greeting();    (oﾟ▽ﾟ)o
+kaokun.fun();         (￣∇￣)
+kaokun.happy();       (❁´◡`❁)
+kaokun.cute();        (✿◕‿◕✿)
+kaokun.sad();         (ಥ _ ಥ)
+kaokun.angry();       ( ╬◣ 益◢）
+kaokun.hurt();        ┌┤´д`├┐
+kaokun.surprised();   （;≧皿≦）
+kaokun.love();        (〃￣︶￣)
+kaokun.random();      q(⊙﹏⊙)ヘ┳━┳
 ```
