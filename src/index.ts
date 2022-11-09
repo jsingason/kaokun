@@ -1,45 +1,81 @@
-import kaoList from './kao_kaomojiya.json';
+import { kaoEmotions, kaoPortions } from './libs/kao';
+import { getSeed } from './libs/libs';
+import { KaoEmotions, KaoPortion } from './types';
 
-// TODO: Add more sources and categorize based on the source
-
-export type KaoCategory = 'greeting' | 'fun' | 'sad' | 'hurt' | 'angry' | 'love';
-
-const getKao = (seed?: string, category?: KaoCategory, maxLength?: number): string => {
+const generateKaoPortion = (portion: KaoPortion, seed?: string): string => {
   const seedAsNumber = getSeed(seed);
-  const selectedCategory = getKaoCategory(category);
+  const portionIndex = seedAsNumber % kaoPortions[portion].length;
+  return kaoPortions[portion][portionIndex];
+};
+
+const getKaoWithEmotion = (emotion: KaoEmotions, seed?: string): string => {
+  const seedAsNumber = getSeed(seed);
+  const emotionIndex = seedAsNumber % kaoEmotions[emotion].length;
+  return kaoEmotions[emotion][emotionIndex];
+};
+
+const checkKaoLength = (kao: string, maxLength: number | undefined): string => {
   if (maxLength) {
-    const kaoListFiltered = kaoList[selectedCategory].filter((kao) => kao.length <= maxLength);
-    const KaoIndexFiltered = seedAsNumber % kaoListFiltered.length;
-    return kaoListFiltered[KaoIndexFiltered];
+    if (kao.length > maxLength) {
+      const slice = kao.length - maxLength;
+      // slice from both sides
+      const sliceFromLeft = Math.floor(slice / 2);
+      const sliceFromRight = Math.ceil(slice / 2);
+      return kao.slice(sliceFromLeft, kao.length - sliceFromRight);
+    }
   }
-  const kaoIndex = seedAsNumber % kaoList[selectedCategory].length;
-  return kaoList[selectedCategory][kaoIndex];
+  return kao;
 };
 
-export const kaomoji = (seed?: string, category?: KaoCategory, maxLength?: number): string =>
-  getKao(seed, category, maxLength);
-export const greeting = (seed?: string, maxLength?: number): string => getKao(seed, 'greeting', maxLength);
-export const fun = (seed?: string, maxLength?: number): string => getKao(seed, 'fun', maxLength);
-export const sad = (seed?: string, maxLength?: number): string => getKao(seed, 'sad', maxLength);
-export const hurt = (seed?: string, maxLength?: number): string => getKao(seed, 'hurt', maxLength);
-export const angry = (seed?: string, maxLength?: number): string => getKao(seed, 'angry', maxLength);
-export const love = (seed?: string, maxLength?: number): string => getKao(seed, 'love', maxLength);
-export const random = (maxLength?: number): string => getKao(undefined, undefined, maxLength);
-
-const getKaoCategory = (category?: KaoCategory): KaoCategory => {
-  if (category) return category;
-  const categories = Object.keys(kaoList) as KaoCategory[];
-  return categories[Math.floor(Math.random() * categories.length)];
+const getKao = ({
+  seed,
+  emotion,
+  maxLength,
+  sides = true,
+  matchingEyes = true,
+}: {
+  seed?: string;
+  emotion?: KaoEmotions;
+  maxLength?: number;
+  sides?: boolean;
+  matchingEyes?: boolean;
+}): string => {
+  const kaoLeftSide = sides ? generateKaoPortion('leftSide', seed) : '';
+  const kaoRightSide = sides ? generateKaoPortion('rightSide', seed) : '';
+  if (emotion) {
+    const face = getKaoWithEmotion(emotion, seed);
+    const kao = `${kaoLeftSide}${face}${kaoRightSide}`;
+    return checkKaoLength(kao, maxLength);
+  }
+  const matchingEyeSeed = Math.random().toString();
+  const kaoLeftEye = generateKaoPortion(
+    'eyes',
+    matchingEyes ? seed ?? matchingEyeSeed : seed + Math.random().toString(),
+  );
+  const kaoRightEye = generateKaoPortion(
+    'eyes',
+    matchingEyes ? seed ?? matchingEyeSeed : seed + Math.random().toString(),
+  );
+  const kaoMouth = generateKaoPortion('mouth', seed);
+  const kao = `${kaoLeftSide}${kaoLeftEye}${kaoMouth}${kaoRightEye}${kaoRightSide}`;
+  return checkKaoLength(kao, maxLength);
 };
 
-const getSeed = (seed?: string): number => {
-  let result = 0;
-  if (!seed) {
-    result = Math.floor(Math.random() * 10 ** 10);
-    return result;
-  }
-  for (let i = 0; i < seed.length; i++) {
-    result += seed.charCodeAt(i);
-  }
-  return result;
-};
+export const kaomoji = (
+  seed?: string,
+  emotion?: KaoEmotions,
+  maxLength?: number,
+  sides?: boolean,
+  matchingEyes?: boolean,
+): string => getKao({ seed, emotion, maxLength, sides, matchingEyes });
+export const greeting = (seed?: string, maxLength?: number): string => getKao({ seed, emotion: 'greeting', maxLength });
+export const fun = (seed?: string, maxLength?: number): string => getKao({ seed, emotion: 'fun', maxLength });
+export const sad = (seed?: string, maxLength?: number): string => getKao({ seed, emotion: 'sad', maxLength });
+export const hurt = (seed?: string, maxLength?: number): string => getKao({ seed, emotion: 'hurt', maxLength });
+export const angry = (seed?: string, maxLength?: number): string => getKao({ seed, emotion: 'angry', maxLength });
+export const love = (seed?: string, maxLength?: number): string => getKao({ seed, emotion: 'love', maxLength });
+export const surprised = (seed?: string, maxLength?: number): string =>
+  getKao({ seed, emotion: 'surprised', maxLength });
+export const happy = (seed?: string, maxLength?: number): string => getKao({ seed, emotion: 'happy', maxLength });
+export const cute = (seed?: string, maxLength?: number): string => getKao({ seed, emotion: 'cute', maxLength });
+export const random = (maxLength?: number): string => getKao({ maxLength });
