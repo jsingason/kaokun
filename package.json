@@ -18,7 +18,7 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "build": "tsc",
-    "format": "prettier --write \"src/**/*.ts\" \"src/**/*.json\"",
+    "format": "prettier --write \"src/**/*.ts\" \"kaomoji/**/*.json\"",
     "lint": "tslint -p tsconfig.json",
     "jest": "jest"
   },

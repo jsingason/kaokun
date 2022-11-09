@@ -1,4 +1,3 @@
-
 export type KaoFace = {
   [key: string]: string[];
 };

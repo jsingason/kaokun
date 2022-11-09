@@ -44,15 +44,15 @@ const getKao = ({
   const kaoRightSide = sides ? generateKaoPart('rightSide', seed) : '';
   if (emotion) {
     const face = getKaoWithEmotion(emotion, seed);
-    const kao = `${kaoLeftSide}${face}${kaoRightSide}`;
-    return checkKaoLength(kao, maxLength);
+    const kaoWithEmotion = `${kaoLeftSide}${face}${kaoRightSide}`;
+    return checkKaoLength(kaoWithEmotion, maxLength);
   }
   const matchingEyeSeed = Math.random().toString();
   const kaoLeftEye = generateKaoPart('eyes', matchingEyes ? seed ?? matchingEyeSeed : seed + Math.random().toString());
   const kaoRightEye = generateKaoPart('eyes', matchingEyes ? seed ?? matchingEyeSeed : seed + Math.random().toString());
   const kaoMouth = generateKaoPart('mouth', seed);
-  const kao = `${kaoLeftSide}${kaoLeftEye}${kaoMouth}${kaoRightEye}${kaoRightSide}`;
-  return checkKaoLength(kao, maxLength);
+  const generatedKao = `${kaoLeftSide}${kaoLeftEye}${kaoMouth}${kaoRightEye}${kaoRightSide}`;
+  return checkKaoLength(generatedKao, maxLength);
 };
 
 export const kaomoji = (
