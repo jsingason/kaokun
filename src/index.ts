@@ -1,11 +1,11 @@
-import { kaoEmotions, kaoPortions } from './libs/kao';
+import { kaoEmotions, kaoParts } from './libs/kao';
 import { getSeed } from './libs/libs';
-import { KaoEmotions, KaoPortion } from './types';
+import { KaoEmotions, KaoPart } from './types';
 
-const generateKaoPortion = (portion: KaoPortion, seed?: string): string => {
+const generateKaoPart = (part: KaoPart, seed?: string): string => {
   const seedAsNumber = getSeed(seed);
-  const portionIndex = seedAsNumber % kaoPortions[portion].length;
-  return kaoPortions[portion][portionIndex];
+  const partIndex = seedAsNumber % kaoParts[part].length;
+  return kaoParts[part][partIndex];
 };
 
 const getKaoWithEmotion = (emotion: KaoEmotions, seed?: string): string => {
@@ -40,23 +40,17 @@ const getKao = ({
   sides?: boolean;
   matchingEyes?: boolean;
 }): string => {
-  const kaoLeftSide = sides ? generateKaoPortion('leftSide', seed) : '';
-  const kaoRightSide = sides ? generateKaoPortion('rightSide', seed) : '';
+  const kaoLeftSide = sides ? generateKaoPart('leftSide', seed) : '';
+  const kaoRightSide = sides ? generateKaoPart('rightSide', seed) : '';
   if (emotion) {
     const face = getKaoWithEmotion(emotion, seed);
     const kao = `${kaoLeftSide}${face}${kaoRightSide}`;
     return checkKaoLength(kao, maxLength);
   }
   const matchingEyeSeed = Math.random().toString();
-  const kaoLeftEye = generateKaoPortion(
-    'eyes',
-    matchingEyes ? seed ?? matchingEyeSeed : seed + Math.random().toString(),
-  );
-  const kaoRightEye = generateKaoPortion(
-    'eyes',
-    matchingEyes ? seed ?? matchingEyeSeed : seed + Math.random().toString(),
-  );
-  const kaoMouth = generateKaoPortion('mouth', seed);
+  const kaoLeftEye = generateKaoPart('eyes', matchingEyes ? seed ?? matchingEyeSeed : seed + Math.random().toString());
+  const kaoRightEye = generateKaoPart('eyes', matchingEyes ? seed ?? matchingEyeSeed : seed + Math.random().toString());
+  const kaoMouth = generateKaoPart('mouth', seed);
   const kao = `${kaoLeftSide}${kaoLeftEye}${kaoMouth}${kaoRightEye}${kaoRightSide}`;
   return checkKaoLength(kao, maxLength);
 };

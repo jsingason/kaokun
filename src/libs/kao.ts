@@ -1,4 +1,4 @@
-import { IKaoEmotions, IKaoPortions } from '../types';
+import { IKaoEmotions, IKaoParts } from '../types';
 
 export const kaoEmotions: IKaoEmotions = {
   greeting: ['(○´･д･)', '○(￣￣￣￣o￣￣￣￣)○', '(p≧w≦q)', '(oﾟ▽ﾟ)o', '(^〇^)'],
@@ -70,7 +70,7 @@ const anySide = ['//', '///', '～', '～～', '～～～', '凸', 'w', 'щ', '�
 const leftSide = anySide.concat(['q(', '○( ', '⌒(o', '(', '(〃', '╰（', '┗|', '(╯', '(ヘ', 'ε=(', '┌┤']);
 const rightSide = anySide.concat([')p', ')っ', 'o)ノﾟ', ')', '〃)', '）╯', '|┛', ')╯︵┻━┻', ')ヘ┳━┳', ')○～', '／★', '├┐'])
 
-export const kaoPortions: IKaoPortions = {
+export const kaoParts: IKaoParts = {
   eyes: [
     '・',
     '━┳━',

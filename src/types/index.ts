@@ -3,7 +3,7 @@ export type KaoFace = {
   [key: string]: string[];
 };
 
-export type KaoPortion = 'eyes' | 'mouth' | 'anySide' | 'leftSide' | 'rightSide';
+export type KaoPart = 'eyes' | 'mouth' | 'anySide' | 'leftSide' | 'rightSide';
 export type KaoEmotions = 'greeting' | 'happy' | 'fun' | 'sad' | 'cute' | 'hurt' | 'angry' | 'surprised' | 'love';
 
 export type KaoOptions = {
@@ -12,7 +12,7 @@ export type KaoOptions = {
   maxLength?: number;
 };
 
-export interface IKaoPortions {
+export interface IKaoParts {
   eyes: string[];
   mouth: string[];
   anySide: string[];
