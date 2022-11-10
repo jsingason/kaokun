@@ -1,7 +1,7 @@
 import { IKaoEmotions, IKaoParts } from '../types';
 
 export const kaoEmotions: IKaoEmotions = {
-  greeting: ['(○´･д･)', '○(￣￣￣￣o￣￣￣￣)○', '(p≧w≦q)', '(oﾟ▽ﾟ)o', '(^〇^)'],
+  greeting: ['(○´･д･)', '○(￣￣o￣￣)○', '(p≧w≦q)', '(oﾟ▽ﾟ)o', '(^〇^)'],
   fun: [
     '(・∀・)',
     '(´∀｀)',
