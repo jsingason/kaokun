@@ -33,8 +33,8 @@ kaokun.cute();        (✿◕‿◕✿)
 kaokun.sad();         (ಥ _ ಥ)
 kaokun.angry();       ( ╬◣ 益◢）
 kaokun.hurt();        ┌┤´д`├┐
-kaokun.surprised();   （;≧皿≦）
+kaokun.surprised();   (;≧皿≦)
 kaokun.love();        (〃￣︶￣)
-kaokun.bored();        (￣﹃￣)
+kaokun.bored();       (￣﹃￣)
 kaokun.random();      q(⊙﹏⊙)ヘ┳━┳
 ```
