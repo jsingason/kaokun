@@ -27,13 +27,7 @@ const checkKaoLength = (kao: string, maxLength: number | undefined): string => {
   return kao;
 };
 
-const getKao = ({
-  seed,
-  emotion,
-  maxLength,
-  sides = true,
-  matchingEyes = true,
-}: KaomojiProps = {}): string => {
+const getKao = ({ seed, emotion, maxLength, sides = true, matchingEyes = true }: KaomojiProps = {}): string => {
   const kaoLeftSide = sides ? generateKaoPart('leftSide', seed) : '';
   const kaoRightSide = sides ? generateKaoPart('rightSide', seed) : '';
   if (emotion) {
@@ -49,13 +43,8 @@ const getKao = ({
   return checkKaoLength(generatedKao, maxLength);
 };
 
-export const kaomoji = ({
-  seed,
-  emotion,
-  maxLength,
-  sides,
-  matchingEyes,
-}: KaomojiProps = {}): string => getKao({ seed, emotion, maxLength, sides, matchingEyes });
+export const kaomoji = ({ seed, emotion, maxLength, sides, matchingEyes }: KaomojiProps = {}): string =>
+  getKao({ seed, emotion, maxLength, sides, matchingEyes });
 export const greeting = (seed?: string, maxLength?: number): string => getKao({ seed, emotion: 'greeting', maxLength });
 export const fun = (seed?: string, maxLength?: number): string => getKao({ seed, emotion: 'fun', maxLength });
 export const sad = (seed?: string, maxLength?: number): string => getKao({ seed, emotion: 'sad', maxLength });

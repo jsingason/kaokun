@@ -3,7 +3,17 @@ export type KaoFace = {
 };
 
 export type KaoPart = 'eyes' | 'mouth' | 'anySide' | 'leftSide' | 'rightSide';
-export type KaoEmotions = 'greeting' | 'happy' | 'fun' | 'sad' | 'cute' | 'hurt' | 'angry' | 'surprised' | 'love' | 'bored';
+export type KaoEmotions =
+  | 'greeting'
+  | 'happy'
+  | 'fun'
+  | 'sad'
+  | 'cute'
+  | 'hurt'
+  | 'angry'
+  | 'surprised'
+  | 'love'
+  | 'bored';
 
 export type KaomojiProps = {
   seed?: string;
