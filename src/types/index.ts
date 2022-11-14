@@ -3,12 +3,14 @@ export type KaoFace = {
 };
 
 export type KaoPart = 'eyes' | 'mouth' | 'anySide' | 'leftSide' | 'rightSide';
-export type KaoEmotions = 'greeting' | 'happy' | 'fun' | 'sad' | 'cute' | 'hurt' | 'angry' | 'surprised' | 'love';
+export type KaoEmotions = 'greeting' | 'happy' | 'fun' | 'sad' | 'cute' | 'hurt' | 'angry' | 'surprised' | 'love' | 'bored';
 
-export type KaoOptions = {
+export type KaomojiProps = {
   seed?: string;
   emotion?: KaoEmotions;
   maxLength?: number;
+  sides?: boolean;
+  matchingEyes?: boolean;
 };
 
 export interface IKaoParts {
@@ -29,4 +31,5 @@ export interface IKaoEmotions {
   angry: string[];
   surprised: string[];
   love: string[];
+  bored: string[];
 }

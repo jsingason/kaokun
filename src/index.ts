@@ -1,6 +1,6 @@
 import { kaoEmotions, kaoParts } from './libs/kao';
 import { getSeed } from './libs/libs';
-import { KaoEmotions, KaoPart } from './types';
+import { KaoEmotions, KaomojiProps, KaoPart } from './types';
 
 const generateKaoPart = (part: KaoPart, seed?: string): string => {
   const seedAsNumber = getSeed(seed);
@@ -33,13 +33,7 @@ const getKao = ({
   maxLength,
   sides = true,
   matchingEyes = true,
-}: {
-  seed?: string;
-  emotion?: KaoEmotions;
-  maxLength?: number;
-  sides?: boolean;
-  matchingEyes?: boolean;
-}): string => {
+}: KaomojiProps): string => {
   const kaoLeftSide = sides ? generateKaoPart('leftSide', seed) : '';
   const kaoRightSide = sides ? generateKaoPart('rightSide', seed) : '';
   if (emotion) {
@@ -55,13 +49,19 @@ const getKao = ({
   return checkKaoLength(generatedKao, maxLength);
 };
 
-export const kaomoji = (
-  seed?: string,
-  emotion?: KaoEmotions,
-  maxLength?: number,
-  sides?: boolean,
-  matchingEyes?: boolean,
-): string => getKao({ seed, emotion, maxLength, sides, matchingEyes });
+export const kaomoji = ({
+  seed,
+  emotion,
+  maxLength,
+  sides,
+  matchingEyes,
+}: {
+  seed?: string;
+  emotion?: KaoEmotions;
+  maxLength?: number;
+  sides?: boolean;
+  matchingEyes?: boolean;
+}): string => getKao({ seed, emotion, maxLength, sides, matchingEyes });
 export const greeting = (seed?: string, maxLength?: number): string => getKao({ seed, emotion: 'greeting', maxLength });
 export const fun = (seed?: string, maxLength?: number): string => getKao({ seed, emotion: 'fun', maxLength });
 export const sad = (seed?: string, maxLength?: number): string => getKao({ seed, emotion: 'sad', maxLength });
@@ -72,4 +72,5 @@ export const surprised = (seed?: string, maxLength?: number): string =>
   getKao({ seed, emotion: 'surprised', maxLength });
 export const happy = (seed?: string, maxLength?: number): string => getKao({ seed, emotion: 'happy', maxLength });
 export const cute = (seed?: string, maxLength?: number): string => getKao({ seed, emotion: 'cute', maxLength });
+export const bored = (seed?: string, maxLength?: number): string => getKao({ seed, emotion: 'bored', maxLength });
 export const random = (maxLength?: number): string => getKao({ maxLength });
