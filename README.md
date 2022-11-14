@@ -22,8 +22,8 @@ yarn add kaokun
 ```
 import * as kaokun from 'kaokun';
 
-import { random as kaoRandom } from 'kaokun';
-import { happy as kaoRandom } from 'kaokun';
+import { random as randomKao } from 'kaokun';
+import { happy as happyKao } from 'kaokun';
 
 
 kaokun.greeting();    (oﾟ▽ﾟ)o
@@ -35,5 +35,6 @@ kaokun.angry();       ( ╬◣ 益◢）
 kaokun.hurt();        ┌┤´д`├┐
 kaokun.surprised();   （;≧皿≦）
 kaokun.love();        (〃￣︶￣)
+kaokun.bored();        (￣﹃￣)
 kaokun.random();      q(⊙﹏⊙)ヘ┳━┳
 ```
