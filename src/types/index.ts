@@ -13,13 +13,19 @@ export type KaoEmotions =
   | 'angry'
   | 'surprised'
   | 'love'
-  | 'bored';
+  | 'bored'
+  | 'silly';
 
 export type KaomojiProps = {
+  // seed for randomization
   seed?: string;
+  // emotion to use
   emotion?: KaoEmotions;
+  // max length of kaomoji
   maxLength?: number;
+  // if false, no sides will be added
   sides?: boolean;
+  // if false, eyes aren't forced to match
   matchingEyes?: boolean;
 };
 
@@ -42,4 +48,5 @@ export interface IKaoEmotions {
   surprised: string[];
   love: string[];
   bored: string[];
+  silly: string[];
 }
