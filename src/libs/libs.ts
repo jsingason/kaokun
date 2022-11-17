@@ -40,10 +40,9 @@ export const getKao = ({ seed, emotion, maxLength, sides = true, matchingEyes = 
   let kaoRightEye = generateKaoPart('eyes', matchingEyes ? seed ?? matchingEyeSeed : seed + Math.random().toString());
   if (kaoMouth === kaoLeftEye || kaoMouth === kaoRightEye) {
     // if mouth is the same as eyes, generate new eyes, chance of this not producing new eyes is very low
-    kaoLeftEye = generateKaoPart(
-      'eyes',
-      matchingEyes ? seed ?? Math.random().toString() : seed + Math.random().toString(),
-    );
+    const newMatchingEyeSeed = Math.random().toString();
+    kaoLeftEye = generateKaoPart('eyes', matchingEyes ? seed ?? newMatchingEyeSeed : seed + Math.random().toString());
+    kaoRightEye = generateKaoPart('eyes', matchingEyes ? seed ?? newMatchingEyeSeed : seed + Math.random().toString());
   }
   const generatedKao = `${kaoLeftSide}${kaoLeftEye}${kaoMouth}${kaoRightEye}${kaoRightSide}`;
   return checkKaoLength(generatedKao, maxLength);

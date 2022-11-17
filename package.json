@@ -19,8 +19,7 @@
     "test": "jest",
     "build": "tsc",
     "format": "prettier --write \"src/**/*.ts\" \"kaomoji/**/*.json\"",
-    "lint": "tslint -p tsconfig.json",
-    "jest": "jest"
+    "lint": "tslint -p tsconfig.json"
   },
   "repository": {
     "type": "git",
