@@ -36,5 +36,6 @@ kaokun.hurt();        ┌┤´д`├┐
 kaokun.surprised();   (;≧皿≦)
 kaokun.love();        (〃￣︶￣)
 kaokun.bored();       (￣﹃￣)
+kaokun.silly();       (✿ൠ✿)
 kaokun.random();      q(⊙﹏⊙)ヘ┳━┳
 ```
