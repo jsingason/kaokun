@@ -2,7 +2,7 @@ export type KaoFace = {
   [key: string]: string[];
 };
 
-export type KaoPart = 'eyes' | 'mouth' | 'anySide' | 'leftSide' | 'rightSide';
+export type KaoPart = 'eyes' | 'mouth' | 'anySide' | 'leftSide' | 'rightSide' | 'tableThrowLeft' | 'tableThrowRight' | 'tableSetLeft' | 'tableSetRight';
 export type KaoEmotions =
   | 'greeting'
   | 'happy'
@@ -27,6 +27,8 @@ export type KaomojiProps = {
   sides?: boolean;
   // if false, eyes aren't forced to match
   matchingEyes?: boolean;
+  // if set a table will be used
+  table?: 'throw' | 'fix';
 };
 
 export interface IKaoParts {
@@ -35,6 +37,10 @@ export interface IKaoParts {
   anySide: string[];
   leftSide: string[];
   rightSide: string[];
+  tableThrowLeft: string[];
+  tableThrowRight: string[];
+  tableSetLeft: string[];
+  tableSetRight: string[];
 }
 
 export interface IKaoEmotions {

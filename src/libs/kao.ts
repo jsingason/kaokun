@@ -1,5 +1,6 @@
 import { IKaoEmotions, IKaoParts } from '../types';
 
+// Emotions & Gestures
 export const kaoEmotions: IKaoEmotions = {
   greeting: ['(○´･д･)', '○(￣￣o￣￣)○', '(p≧w≦q)', '(oﾟ▽ﾟ)o', '(^〇^)'],
   fun: [
@@ -104,9 +105,28 @@ export const kaoEmotions: IKaoEmotions = {
   ],
 };
 
+// Sides
 const anySide = ['//', '///', '～', '～～', '～～～', '凸', 'w', 'щ', '☞', '☜'];
-const leftSide = anySide.concat(['q(', '○( ', '⌒(o', '(', '(〃', '╰（', '┗|', '(╯', '(ヘ', 'ε=(', '┌┤']);
-const rightSide = anySide.concat([
+const tableThrowLeft = [
+  '┻━┻︵╰(',
+  '┻━┻︵┗|',
+]
+const tableSetLeft = [
+  '┬─┬ノ(',
+  '┬─┬ノ|',
+]
+const leftSide = ['q(', '○( ', '⌒(o', '(', '(〃', '╰（', '┗|', '(╯', '(ヘ', 'ε=(', '┌┤'];
+const leftSideExtended = leftSide.concat(anySide).concat(tableThrowLeft).concat(tableSetLeft);
+
+const tableThrowRight = [
+  ')╯︵┻━┻',
+  '|┛︵┻━┻',
+]
+const tableSetRight = [
+  ')ヘ┳━┳',
+  '|ヘ┳━┳',
+]
+const rightSide = [
   ')p',
   ')っ',
   'o)ノﾟ',
@@ -114,13 +134,13 @@ const rightSide = anySide.concat([
   '〃)',
   '）╯',
   '|┛',
-  ')╯︵┻━┻',
-  ')ヘ┳━┳',
   ')○～',
   '／★',
   '├┐',
-]);
+]
+const rightSideExtended = rightSide.concat(anySide).concat(tableThrowRight);
 
+// Exported parts of Kaomoji
 export const kaoParts: IKaoParts = {
   eyes: [
     '・',
@@ -196,6 +216,10 @@ export const kaoParts: IKaoParts = {
     '(ｪ)',
   ],
   anySide,
-  leftSide,
-  rightSide,
+  leftSide: leftSideExtended,
+  rightSide: rightSideExtended,
+  tableThrowLeft,
+  tableThrowRight,
+  tableSetLeft,
+  tableSetRight,
 };

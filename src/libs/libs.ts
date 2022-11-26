@@ -26,7 +26,8 @@ const checkKaoLength = (kao: string, maxLength: number | undefined): string => {
   return kao;
 };
 
-export const getKao = ({ seed, emotion, maxLength, sides = true, matchingEyes = true }: KaomojiProps = {}): string => {
+export const getKao = ({ seed, emotion, maxLength, sides = true, matchingEyes = true, table = undefined }: KaomojiProps = {}): string => {
+  // TODO: add table condition
   const kaoLeftSide = sides ? generateKaoPart('leftSide', seed) : '';
   const kaoRightSide = sides ? generateKaoPart('rightSide', seed) : '';
   if (emotion) {
