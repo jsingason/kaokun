@@ -25,7 +25,7 @@
     "type": "git",
     "url": "git+https://github.com/jsingason/kaokun.git"
   },
-  "version": "1.1.8",
+  "version": "1.1.9",
   "description": "Generate Kaomoji with seeding",
   "homepage": "https://jsingason.github.io/kaokun",
   "bugs": "https://github.com/jsingason/kaokun/issues",
