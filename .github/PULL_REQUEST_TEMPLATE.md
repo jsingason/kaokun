@@ -1,5 +1,5 @@
 **Description**
 
 **Checklist**
-- [ ] Tests pass (`npm test`)
-- [ ] Lint passes (`npm run lint`)
+- [ ] Tests pass (`yarn test`)
+- [ ] Lint passes (`yarn lint`)
