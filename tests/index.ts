@@ -1,4 +1,4 @@
-import * as kaokun from '../lib/index';
+import * as kaokun from '../src/index';
 
 console.log('kaokun.kaomoji():', kaokun.kaomoji());
 console.log('kaokun.greeting():', kaokun.greeting());

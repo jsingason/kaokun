@@ -12,7 +12,7 @@ import { KaoEmotions, KaomojiProps, KaoPart } from '../types';
  * generateKaoPart('eyes', '123') // returns '✿'
  * generateKaoPart('mouth', '123') // returns 'u'
  */
-const generateKaoPart = (part: KaoPart, seed?: string): string => {
+export const generateKaoPart = (part: KaoPart, seed?: string): string => {
   const seedAsNumber = getSeed(seed);
   const partIndex = seedAsNumber % kaoParts[part].length;
   return kaoParts[part][partIndex];
@@ -28,7 +28,7 @@ const generateKaoPart = (part: KaoPart, seed?: string): string => {
  * getKaoWithEmotion('sad', '123') // returns '(´ω｀。)'
  * getKaoWithEmotion('angry', '123') // returns '(# ﾟДﾟ)'
  */
-const getKaoWithEmotion = (emotion: KaoEmotions, seed?: string): string => {
+export const getKaoWithEmotion = (emotion: KaoEmotions, seed?: string): string => {
   const seedAsNumber = getSeed(seed);
   const emotionIndex = seedAsNumber % kaoEmotions[emotion].length;
   return kaoEmotions[emotion][emotionIndex];
@@ -46,7 +46,7 @@ const getKaoWithEmotion = (emotion: KaoEmotions, seed?: string): string => {
  * checkKaoLength('ε=(○(￣￣o￣￣)○w', 6) // returns '(￣￣o￣￣'
  * checkKaoLength('ε=(○(￣￣o￣￣)○w') // returns 'ε=(○(￣￣o￣￣)○w'
  */
-const checkKaoLength = (kao: string, maxLength?: number): string => {
+export const checkKaoLength = (kao: string, maxLength?: number): string => {
   if (maxLength) {
     if (kao.length > maxLength) {
       const slice = kao.length - maxLength;
@@ -74,15 +74,20 @@ export const getKao = ({ seed, emotion, maxLength, sides = true, matchingEyes = 
     const kaoWithEmotion = `${kaoLeftSide}${face}${kaoRightSide}`;
     return checkKaoLength(kaoWithEmotion, maxLength);
   }
-  const matchingEyeSeed = Math.random().toString();
+  // Derive deterministic seeds for eyes when seed is provided, otherwise use random
+  const eyeSeed = seed ?? Math.random().toString();
+  const leftEyeSeed = matchingEyes ? eyeSeed : seed ? seed + '_left' : Math.random().toString();
+  const rightEyeSeed = matchingEyes ? eyeSeed : seed ? seed + '_right' : Math.random().toString();
+
   const kaoMouth = generateKaoPart('mouth', seed);
-  let kaoLeftEye = generateKaoPart('eyes', matchingEyes ? seed ?? matchingEyeSeed : seed + Math.random().toString());
-  let kaoRightEye = generateKaoPart('eyes', matchingEyes ? seed ?? matchingEyeSeed : seed + Math.random().toString());
+  let kaoLeftEye = generateKaoPart('eyes', leftEyeSeed);
+  let kaoRightEye = generateKaoPart('eyes', rightEyeSeed);
   if (kaoMouth === kaoLeftEye || kaoMouth === kaoRightEye) {
-    // if mouth is the same as eyes, generate new eyes, chance of this not producing new eyes is very low
-    const newMatchingEyeSeed = Math.random().toString();
-    kaoLeftEye = generateKaoPart('eyes', matchingEyes ? seed ?? newMatchingEyeSeed : seed + Math.random().toString());
-    kaoRightEye = generateKaoPart('eyes', matchingEyes ? seed ?? newMatchingEyeSeed : seed + Math.random().toString());
+    // if mouth is the same as eyes, generate new eyes using a different seed suffix
+    const retryLeftSeed = matchingEyes ? eyeSeed + '_retry' : seed ? seed + '_left_retry' : Math.random().toString();
+    const retryRightSeed = matchingEyes ? eyeSeed + '_retry' : seed ? seed + '_right_retry' : Math.random().toString();
+    kaoLeftEye = generateKaoPart('eyes', retryLeftSeed);
+    kaoRightEye = generateKaoPart('eyes', retryRightSeed);
   }
   const generatedKao = `${kaoLeftSide}${kaoLeftEye}${kaoMouth}${kaoRightEye}${kaoRightSide}`;
   return checkKaoLength(generatedKao, maxLength);
