@@ -1,5 +1,5 @@
-import { kaoEmotions, kaoParts } from './kao';
-import { KaoEmotions, KaomojiProps, KaoPart } from '../types';
+import { kaoEmotions, kaoParts } from './kao.js';
+import { KaoEmotions, KaomojiProps, KaoPart } from '../types/index.js';
 
 /**
  * generateKaoPart() returns a random part of the kaomoji based on the part and seed string.

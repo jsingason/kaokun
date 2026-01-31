@@ -1,4 +1,4 @@
-import { IKaoEmotions, IKaoParts } from '../types';
+import { IKaoEmotions, IKaoParts } from '../types/index.js';
 
 export const kaoEmotions: IKaoEmotions = {
   greeting: ['(○´･д･)', '○(￣￣o￣￣)○', '(p≧w≦q)', '(oﾟ▽ﾟ)o', '(^〇^)'],

@@ -30,15 +30,18 @@
   "scripts": {
     "test": "jest",
     "test:coverage": "jest --coverage",
-    "build": "npm run build:cjs && npm run build:esm",
+    "test:build": "yarn build:esm-test && node dist-tests/esm/esm.test.js",
+    "test:all": "yarn build && yarn test && yarn test:build",
+    "build": "yarn build:cjs && yarn build:esm",
     "build:cjs": "tsc -p tsconfig.cjs.json",
-    "build:esm": "tsc -p tsconfig.esm.json",
+    "build:esm": "tsc -p tsconfig.esm.json && node -e \"require('fs').writeFileSync('./lib/esm/package.json', '{\\\"type\\\":\\\"module\\\"}')\"",
+    "build:esm-test": "tsc -p tsconfig.esm-test.json",
     "format": "prettier --write \"src/**/*.ts\" \"tests/**/*.ts\"",
     "lint": "eslint src tests",
     "lint:fix": "eslint src tests --fix",
     "typecheck": "tsc --noEmit",
     "prepare": "husky || true",
-    "prepublishOnly": "npm run lint && npm run test && npm run build"
+    "prepublishOnly": "yarn lint && yarn test && yarn build"
   },
   "repository": {
     "type": "git",

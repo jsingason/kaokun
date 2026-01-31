@@ -1,5 +1,5 @@
-import { getKao } from './libs/libs';
-import { KaomojiProps } from './types';
+import { getKao } from './libs/libs.js';
+import { KaomojiProps } from './types/index.js';
 
 export const kaomoji = ({ seed, emotion, maxLength, sides, matchingEyes }: KaomojiProps = {}): string =>
   getKao({ seed, emotion, maxLength, sides, matchingEyes });
