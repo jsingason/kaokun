@@ -7,6 +7,16 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [1.2.1] - 2025-01-31
+
+### Added
+- Full ESM support with `.js` file extensions for proper module resolution
+- CJS and ESM usage examples in `/examples` directory
+- Build-time tests to verify CJS and ESM output compatibility
+
+### Fixed
+- CI workflow test execution order to prevent intermittent failures
+
 ## [1.2.0] - 2025-01-31
 
 ### Fixed
