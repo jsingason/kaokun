@@ -1,5 +1,7 @@
 {
   "name": "kaokun",
+  "version": "1.2.0",
+  "description": "Generate Kaomoji with seeding",
   "keywords": [
     "kaokun",
     "kaomoji",
@@ -42,8 +44,6 @@
     "type": "git",
     "url": "git+https://github.com/jsingason/kaokun.git"
   },
-  "version": "1.1.10",
-  "description": "Generate Kaomoji with seeding",
   "homepage": "https://jsingason.github.io/kaokun",
   "bugs": "https://github.com/jsingason/kaokun/issues",
   "author": "Jóhann S. Ingason <jsingason@gmail.com>",
